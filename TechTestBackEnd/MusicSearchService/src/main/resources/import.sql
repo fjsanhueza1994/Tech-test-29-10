@@ -1,2 +1,2 @@
-INSERT INTO favorite (artist_name, song_id, user, ranking) VALUES ('The Beatles', '1', 'John', '5/5');
-INSERT INTO favorite (artist_name, song_id, user, ranking) VALUES ('Cantante de prueba', '888', 'John', '3/5');
+INSERT INTO favorite (artist_name, song_id, username, ranking) VALUES ('The Beatles', 1 , 'John', '5/5');
+INSERT INTO favorite (artist_name, song_id, username, ranking) VALUES ('Cantante de prueba', 888 , 'John', '3/5');
