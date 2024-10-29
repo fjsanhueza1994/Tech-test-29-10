@@ -1,5 +1,6 @@
 package com.tech.test.msmusicsearch.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,21 +11,25 @@ public class Favorite {
     private Long id;
 
     @Column(name = "artist_name")
+    @JsonProperty("nombre_banda")
     private String artistName;
 
     @Column(name = "song_id")
+    @JsonProperty("cancion_id")
     private Long songId;
 
-    private String user;
+    @JsonProperty("usuario")
+    private String username;
 
+    @JsonProperty("ranking")
     private String ranking;
 
     public Favorite() {}
 
-    public Favorite(String artistName, Long songId, String user, String ranking) {
+    public Favorite(String artistName, Long songId, String username, String ranking) {
         this.artistName = artistName;
         this.songId = songId;
-        this.user = user;
+        this.username = username;
         this.ranking = ranking;
     }
 
@@ -52,8 +57,12 @@ public class Favorite {
         this.songId = songId;
     }
 
-    public String getuser() {
-        return user;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getRanking() {

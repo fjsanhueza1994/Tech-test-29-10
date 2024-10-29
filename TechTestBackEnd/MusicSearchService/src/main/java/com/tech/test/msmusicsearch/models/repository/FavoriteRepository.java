@@ -8,6 +8,6 @@ import java.util.List;
 @Repository
 public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
 
-   List<Favorite> findByUserName(String userName);
+   List<Favorite> findByUsername(String username);
 
 }
