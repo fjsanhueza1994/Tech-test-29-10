@@ -1,4 +1,4 @@
-package com.tech.test.msmusicsearch.model;
+package com.tech.test.msmusicsearch.models.entity;
 
 import jakarta.persistence.*;
 
@@ -9,11 +9,11 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "artist_name")
     private String artistName;
 
-    @ManyToOne
-    @JoinColumn(name = "song_id", nullable = false)
-    private Song song;
+    @Column(name = "song_id")
+    private Long songId;
 
     private String user;
 
@@ -21,9 +21,9 @@ public class Favorite {
 
     public Favorite() {}
 
-    public Favorite(String artistName, Song song, String user, String ranking) {
+    public Favorite(String artistName, Long songId, String user, String ranking) {
         this.artistName = artistName;
-        this.song = song;
+        this.songId = songId;
         this.user = user;
         this.ranking = ranking;
     }
@@ -44,12 +44,12 @@ public class Favorite {
         this.artistName = artistName;
     }
 
-    public Song getSong() {
-        return song;
+    public Long getSongId() {
+        return songId;
     }
 
-    public void setSong(Song song) {
-        this.song = song;
+    public void setSong(Long songId) {
+        this.songId = songId;
     }
 
     public String getuser() {

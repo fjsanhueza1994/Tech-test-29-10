@@ -1,6 +1,6 @@
-package com.tech.test.msmusicsearch.repository;
+package com.tech.test.msmusicsearch.models.repository;
 
-import com.tech.test.msmusicsearch.model.Favorite;
+import com.tech.test.msmusicsearch.models.entity.Favorite;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
