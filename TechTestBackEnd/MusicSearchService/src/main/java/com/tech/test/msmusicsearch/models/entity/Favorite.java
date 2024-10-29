@@ -12,7 +12,7 @@ public class Favorite {
 
     @Column(name = "artist_name")
     @JsonProperty("nombre_banda")
-    private String artistName;
+    private String artistname;
 
     @Column(name = "song_id")
     @JsonProperty("cancion_id")
@@ -26,8 +26,8 @@ public class Favorite {
 
     public Favorite() {}
 
-    public Favorite(String artistName, Long songId, String username, String ranking) {
-        this.artistName = artistName;
+    public Favorite(String artistname, Long songId, String username, String ranking) {
+        this.artistname = artistname;
         this.songId = songId;
         this.username = username;
         this.ranking = ranking;
@@ -41,12 +41,12 @@ public class Favorite {
         this.id = id;
     }
 
-    public String getartistName() {
-        return artistName;
+    public String getArtistname() {
+        return artistname;
     }
 
-    public void setartistName(String artistName) {
-        this.artistName = artistName;
+    public void setArtistname(String artistName) {
+        this.artistname = artistName;
     }
 
     public Long getSongId() {
