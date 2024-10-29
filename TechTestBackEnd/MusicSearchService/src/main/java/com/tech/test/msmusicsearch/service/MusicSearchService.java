@@ -6,6 +6,6 @@ import java.io.IOException;
 
 public interface MusicSearchService {
 
-    public MusicSearchResponseDTO searchSongs(String searchTerm) throws IOException;
+    MusicSearchResponseDTO searchSongs(String searchTerm) throws IOException;
 
 }

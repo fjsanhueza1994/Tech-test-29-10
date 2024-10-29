@@ -13,10 +13,21 @@ import java.util.List;
 public class MusicSearchController {
 
     private final FavoriteServiceImpl favoriteServiceImpl;
+    private final MusicSearchServiceImpl musicSearchServiceImpl;
 
     @Autowired
-    public MusicSearchController(FavoriteServiceImpl favoriteServiceImpl) {
+    public MusicSearchController(FavoriteServiceImpl favoriteServiceImpl, MusicSearchServiceImpl musicSearchServiceImpl) {
         this.favoriteServiceImpl = favoriteServiceImpl;
+        this.musicSearchServiceImpl = musicSearchServiceImpl;
+    }
+
+    @GetMapping("/search_tracks/{searchTerm}")
+    public ResponseEntity<?> searchTracks(@PathVariable String searchTerm) {
+        try {
+            return ResponseEntity.ok(musicSearchServiceImpl.searchSongs(searchTerm));
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
