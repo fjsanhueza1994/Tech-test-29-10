@@ -1,38 +1,27 @@
-package com.tech.test.msmusicsearch.model;
+package com.tech.test.msmusicsearch.dto;
 
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 
-@Entity
-public class Song {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "nombre_album")
+public class SongDTO {
+    private Long songId;
+    @JsonProperty("nombre_album")
     private String albumName;
-
-    @Column(name = "nombre_tema")
+    @JsonProperty("nombre_cancion")
     private String songName;
-
-    @Column(name = "preview_url")
+    @JsonProperty("preview_url")
     private String previewUrl;
-
-    @Column(name = "fecha_lanzamiento")
+    @JsonProperty("fecha_lanzamiento")
     private LocalDate releaseDate;
-
-    @Embedded
+    @JsonProperty("precio")
     private Price price;
 
-    public Song() {}
+    public SongDTO() {
+    }
 
-    public Song(String albumName, String songName, String previewUrl, LocalDate releaseDate, Price price) {
+    public SongDTO(Long songId, String albumName, String songName, String previewUrl, LocalDate releaseDate, Price price) {
+        this.songId = songId;
         this.albumName = albumName;
         this.songName = songName;
         this.previewUrl = previewUrl;
@@ -40,13 +29,12 @@ public class Song {
         this.price = price;
     }
 
-    // Getters y Setters
-    public Long getId() {
-        return id;
+    public Long getSongId() {
+        return songId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setSongId(Long songId) {
+        this.songId = songId;
     }
 
     public String getAlbumName() {
@@ -83,9 +71,5 @@ public class Song {
 
     public Price getPrice() {
         return price;
-    }
-
-    public void setPrice(Price price) {
-        this.price = price;
     }
 }

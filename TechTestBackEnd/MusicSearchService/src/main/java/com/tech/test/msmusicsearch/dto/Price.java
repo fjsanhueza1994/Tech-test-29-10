@@ -1,11 +1,12 @@
-package com.tech.test.msmusicsearch.model;
+package com.tech.test.msmusicsearch.dto;
 
-import jakarta.persistence.Embeddable;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Embeddable
 public class Price {
 
+    @JsonProperty("valor")
     private double value;
+    @JsonProperty("moneda")
     private String currency;
 
     public Price() {}
