@@ -1,2 +1,10 @@
-/.idea/
+# Ignorar todas las carpetas .idea en el proyecto
+**/.idea/
+
+# Archivos específicos de .idea a ignorar (si acaso no quieres ignorar toda la carpeta)
+**/.idea/shelf/
+**/.idea/workspace.xml
+**/.idea/httpRequests/
+
+# Otros archivos a ignorar
 .env
