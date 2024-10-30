@@ -19,7 +19,7 @@ Antes de comenzar, asegúrate de tener Docker instalado en tu sistema. [Instrucc
 
 1. **Clonar el Repositorio**:
    ```bash
-   git clone <URL_del_repositorio>
+   git clone https://github.com/fjsanhueza1994/Tech-test-29-10.git
    cd Tech-test-29-10
 2. **Construir y Ejecutar los Contenedores Docker**: Asegúrate de que el archivo docker-compose.yml esté configurado correctamente en el directorio raíz del proyecto. Luego, ejecuta el siguiente comando para construir y levantar los contenedores de backend y frontend:
    ```bash
