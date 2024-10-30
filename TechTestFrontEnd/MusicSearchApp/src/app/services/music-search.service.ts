@@ -12,7 +12,8 @@ export class MusicSearchService {
   constructor(private http: HttpClient) {}
 
   searchSongs(artistName: string): Observable<MusicSearchResponse> {
-    const params = new HttpParams().set('artistName', artistName);
-    return this.http.get<MusicSearchResponse>(this.apiURL, { params });
+    const url = `${this.apiURL}/${encodeURIComponent(artistName)}`;
+    console.log(url);
+    return this.http.get<MusicSearchResponse>(url);
   }
 }
