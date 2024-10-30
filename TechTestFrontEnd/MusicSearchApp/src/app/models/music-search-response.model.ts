@@ -1,19 +1,20 @@
-export interface Price {
-  value: number;
-  currency: string;
+export interface Precio {
+  valor: number;
+  moneda: string;
 }
 
-export interface Song {
-  songName: string;
-  albumName: string;
-  previewUrl: string;
-  price: Price;
-  releaseDate: string;
+export interface Cancion {
+  songId: number;
+  nombre_album: string;
+  nombre_cancion: string;
+  preview_url: string;
+  fecha_lanzamiento: string;
+  precio: Precio;
 }
 
 export interface MusicSearchResponse {
-  total_albums: number;
-  total_songs: number;
-  albums: string[];
-  songs: Song[];
+  total_albumes: number;
+  total_canciones: number;
+  albumes: string[];
+  canciones: Cancion[];
 }
