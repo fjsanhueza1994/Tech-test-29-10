@@ -1,0 +1,23 @@
+###
+
+GET https://itunes.apple.com/search?term=Anuel&media=music&entity=song
+
+###
+
+GET localhost:8081/music-search/favoritos-usuario/John
+
+###
+
+POST localhost:8081/music-search/favoritos
+Content-Type: application/json
+
+{
+  "nombre_banda": "Michael Jackson",
+  "cancion_id": 159293734,
+  "usuario": "John",
+  "ranking": "5/5"
+}
+
+###
+
+GET localhost:8081/music-search/search_tracks/Anuel
