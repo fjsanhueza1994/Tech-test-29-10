@@ -1,1 +1,30 @@
-<p>music-search works!</p>
+<div>
+  <input
+    type="text"
+    [(ngModel)]="artistName"
+    placeholder="Enter artist name"
+  />
+  <button (click)="searchSongs(artistName)">Search</button>
+</div>
+
+<div *ngIf="musicSearchResponse">
+  <h2>Total Albums: {{ musicSearchResponse.total_albumes }}</h2>
+  <h2>Total Songs: {{ musicSearchResponse.total_canciones }}</h2>
+
+  <table>
+    <tr>
+      <th>Song Name</th>
+      <th>Album Name</th>
+      <th>Preview URL</th>
+      <th>Price</th>
+      <th>Release Date</th>
+    </tr>
+    <tr *ngFor="let cancion of musicSearchResponse.canciones">
+      <td>{{ cancion.nombre_cancion }}</td>
+      <td>{{ cancion.nombre_album }}</td>
+      <td><a [href]="cancion.preview_url" target="_blank">Preview</a></td>
+      <td>{{ cancion.precio.valor }} {{ cancion.precio.moneda }}</td>
+      <td>{{ cancion.fecha_lanzamiento }}</td>
+    </tr>
+  </table>
+</div>
