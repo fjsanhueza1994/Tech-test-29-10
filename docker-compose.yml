@@ -1,0 +1,21 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./TechTestBackEnd/MusicSearchService
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./TechTestFrontEnd/MusicSearchApp
+    ports:
+      - "4200:4200"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
