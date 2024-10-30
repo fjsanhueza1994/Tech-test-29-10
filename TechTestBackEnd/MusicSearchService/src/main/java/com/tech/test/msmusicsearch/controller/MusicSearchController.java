@@ -2,6 +2,7 @@ package com.tech.test.msmusicsearch.controller;
 
 import com.tech.test.msmusicsearch.models.entity.Favorite;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class MusicSearchController {
     }
 
     @GetMapping("/search_tracks/{searchTerm}")
+    @Cacheable(cacheNames="itunesCache", key = "#searchTerm")
     public ResponseEntity<?> searchTracks(@PathVariable String searchTerm) {
         try {
             return ResponseEntity.ok(musicSearchServiceImpl.searchSongs(searchTerm));
