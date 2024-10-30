@@ -13,10 +13,12 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.text.Normalizer;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,8 +55,10 @@ public class MusicSearchServiceImpl implements MusicSearchService {
 
             for (JsonNode result : results) {
                 String artistName = result.path("artistName").asText();
-                if (!artistName.replaceAll("[ +]", "").equalsIgnoreCase(
-                        searchTerm.replaceAll("[ +]", ""))
+                String normalizedArtistName = removeAccents(artistName).toLowerCase();
+                String normalizedSearchTerm = removeAccents(searchTerm).toLowerCase();
+                if (!normalizedArtistName.replaceAll("[ +]", "").contains(
+                        normalizedSearchTerm.replaceAll("[ +]", ""))
                 ) {
                     continue;
                 }
@@ -90,5 +94,10 @@ public class MusicSearchServiceImpl implements MusicSearchService {
         } catch (IOException e) {
           throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error parsing API response", e);
         }
+    }
+
+    public static String removeAccents(String input) {
+        String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
+        return Pattern.compile("\\p{M}").matcher(normalized).replaceAll("");
     }
 }
